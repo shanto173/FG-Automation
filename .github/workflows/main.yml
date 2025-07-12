@@ -40,7 +40,7 @@ jobs:
 
       - name: Create creds file
         run: |
-          echo "${{ secrets.GOOGLE_CREDENTIALS_B64 }}" | base64 -d > gcreds.json
+          echo "${{ secrets.GOOGLE_CREDENTIALS_BASE64 }}" | base64 -d > gcreds.json
 
 
       - name: Run Zipper FG Delivery Data
