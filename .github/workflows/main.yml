@@ -1,1 +1,60 @@
-print("hello world")
+name: Order Cycle process 
+
+on:
+  workflow_dispatch:  # Manual run
+  # schedule:
+  # - cron: '0 2 * * *'     # 8:00 AM BD
+  # - cron: '0 3 * * *'     # 9:00 AM BD
+  # - cron: '30 3 * * *'    # 9:30 AM BD
+  # - cron: '58 3 * * *'    # 9:58 AM BD
+  # - cron: '0 4 * * *'     # 10:00 AM BD
+  # - cron: '30 4 * * *'    # 10:30 AM BD
+  # - cron: '0 5 * * *'     # 11:00 AM BD
+  # - cron: '30 5 * * *'    # 11:30 AM BD
+  # - cron: '0 6 * * *'     # 12:00 PM BD
+  # - cron: '30 6 * * *'    # 12:30 PM BD
+  # - cron: '0 10 * * *'    # 4:00 PM BD ✅
+  # - cron: '0 11 * * *'    # 5:00 PM BD ✅
+  # - cron: '0 12 * * *'    # 6:00 PM BD ✅
+  # - cron: '0 13 * * *'    # 7:00 PM BD ✅
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install selenium pandas gspread oauth2client gspread-dataframe webdriver-manager openpyxl pytz psycopg2 sqlalchemy
+
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@latest
+
+      - name: Create creds file
+        run: |
+          echo "${{ secrets.GOOGLE_CREDENTIALS_B64 }}" | base64 -d > gcreds.json
+
+
+      - name: Run Zipper FG Delivery Data
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: gcreds.json
+        run: python downLoad_FG_Delivery.py
+
+
+      - name: Run Metal Trims FG delivery Data
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: gcreds.json
+        run: python MT_downLoad_FG_Delivery.py
+
+
+
+      - name: Clean up creds
+        run: rm gcreds.json
