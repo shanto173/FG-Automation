@@ -59,13 +59,13 @@ jobs:
 
 #################  FG Packing Data #######################
 
-      - name: Run Zipper FG Delivery Data
+      - name: Run Zipper FG Packing Data
         env:
           GOOGLE_APPLICATION_CREDENTIALS: gcreds.json
         run: python downLoad_FG_Packing.py
 
 
-      - name: Run Metal Trims FG delivery Data
+      - name: Run Metal Trims FG Packing Data
         env:
           GOOGLE_APPLICATION_CREDENTIALS: gcreds.json
         run: python MT_downLoad_FG_Packing.py
