@@ -46,7 +46,7 @@ jobs:
 
 ################ FG STock Data  #########################
 
-      - name: Run Zipper MT FG STock Data
+      - name: Run MT FG STock Data
         env:
           GOOGLE_APPLICATION_CREDENTIALS: gcreds.json
         run: python MT_downLoad_FG_Stock.py
