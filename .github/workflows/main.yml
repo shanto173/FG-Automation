@@ -1,4 +1,4 @@
-name: Order Cycle process 
+name: FG Streamline Process
 
 on:
   workflow_dispatch:  # Manual run
