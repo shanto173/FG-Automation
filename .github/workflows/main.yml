@@ -43,6 +43,17 @@ jobs:
           echo "${{ secrets.GOOGLE_CREDENTIALS_BASE64 }}" | base64 -d > gcreds.json
 
 
+
+################ FG STock Data  #########################
+
+      - name: Run Zipper MT FG STock Data
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: gcreds.json
+        run: python MT_downLoad_FG_Stock.py
+
+
+
+
 #################  FG Packing Data #######################
 
       - name: Run Zipper FG Delivery Data
