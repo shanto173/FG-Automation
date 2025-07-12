@@ -263,12 +263,12 @@ while True:
 
     except Exception as e:
         driver.save_screenshot("error_screenshot.png")
-        log.error(f"❌ Error Roccurred: {traceback.format_exc()}\nRetrying in 10 seconds...\n")
+        log.error(f"❌ Error Roccurred: {traceback.format_exc()}\nRetrying in 5 seconds...\n")
         try:
             driver.quit()
         except:
             pass
-        time.sleep(10)
+        time.sleep(5)
         
 
 # === Step 11: Load latest file and paste to Google Sheet ===
