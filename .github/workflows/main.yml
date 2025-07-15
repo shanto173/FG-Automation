@@ -2,21 +2,21 @@ name: FG Streamline Process
 
 on:
   workflow_dispatch:  # Manual run
-  # schedule:
-  # - cron: '0 2 * * *'     # 8:00 AM BD
-  # - cron: '0 3 * * *'     # 9:00 AM BD
-  # - cron: '30 3 * * *'    # 9:30 AM BD
-  # - cron: '58 3 * * *'    # 9:58 AM BD
-  # - cron: '0 4 * * *'     # 10:00 AM BD
-  # - cron: '30 4 * * *'    # 10:30 AM BD
-  # - cron: '0 5 * * *'     # 11:00 AM BD
-  # - cron: '30 5 * * *'    # 11:30 AM BD
-  # - cron: '0 6 * * *'     # 12:00 PM BD
-  # - cron: '30 6 * * *'    # 12:30 PM BD
-  # - cron: '0 10 * * *'    # 4:00 PM BD ✅
-  # - cron: '0 11 * * *'    # 5:00 PM BD ✅
-  # - cron: '0 12 * * *'    # 6:00 PM BD ✅
-  # - cron: '0 13 * * *'    # 7:00 PM BD ✅
+  schedule:
+  - cron: '0 2 * * *'     # 8:00 AM BD
+  - cron: '0 3 * * *'     # 9:00 AM BD
+  - cron: '30 3 * * *'    # 9:30 AM BD
+  - cron: '58 3 * * *'    # 9:58 AM BD
+  - cron: '0 4 * * *'     # 10:00 AM BD
+  - cron: '30 4 * * *'    # 10:30 AM BD
+  - cron: '0 5 * * *'     # 11:00 AM BD
+  - cron: '30 5 * * *'    # 11:30 AM BD
+  - cron: '0 6 * * *'     # 12:00 PM BD
+  - cron: '30 6 * * *'    # 12:30 PM BD
+  - cron: '0 10 * * *'    # 4:00 PM BD ✅
+  - cron: '0 11 * * *'    # 5:00 PM BD ✅
+  - cron: '0 12 * * *'    # 6:00 PM BD ✅
+  - cron: '0 13 * * *'    # 7:00 PM BD ✅
 
 jobs:
   run-script:
@@ -45,6 +45,11 @@ jobs:
 
 
 ################ FG STock Data  #########################
+
+      - name: Run Zipper FG STock Data
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: gcreds.json
+        run: python downLoad_FG_Stock.py
 
       - name: Run MT FG STock Data
         env:
