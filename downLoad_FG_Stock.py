@@ -169,7 +169,7 @@ try:
 
     # Open the sheet and paste the data
     sheet = client.open_by_key("1WNwp_7AnRVHuxV5WR6zw6ijF2kxTS3tNiaXW92D1O9I")
-    worksheet = sheet.worksheet("MT FG live Stock")
+    worksheet = sheet.worksheet("Zip FG live Stock")
     
 
     # Clear old content (optional)
