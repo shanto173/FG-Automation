@@ -173,7 +173,7 @@ try:
     
 
     # Clear old content (optional)
-    worksheet.batch_clear(['A:AC'])
+    worksheet.batch_clear(['A:AD'])
 
     # Paste new data
     set_with_dataframe(worksheet, df_production_pcs)
