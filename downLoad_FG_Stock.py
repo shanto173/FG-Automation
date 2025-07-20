@@ -114,7 +114,7 @@ while True:
         # Step 8
         log.info("=== Click on Excel Download ===")
         wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div[2]/div/div/button"))).click() 
-        time.sleep(4)
+        time.sleep(10)
 
        
         # === Step 9: Confirm file downloaded ===
@@ -172,18 +172,25 @@ try:
     worksheet = sheet.worksheet("Zip FG live Stock")
     
 
+    if df_production_pcs.empty:
+        print("Skip: DataFrame is empty, not pasting to sheet.")
+    else:
     # Clear old content (optional)
-    worksheet.batch_clear(['A:AD'])
+        worksheet.batch_clear(['A:AD'])
 
-    # Paste new data
-    set_with_dataframe(worksheet, df_production_pcs)
-    print("Data pasted to Google Sheet (Sheet4).")
+        # Paste new data
+        set_with_dataframe(worksheet, df_production_pcs)
+        print("Data pasted to Google Sheet (Sheet4).")
+        
+        # === ✅ Add timestamp to Y2 ===
+        local_tz = pytz.timezone('Asia/Dhaka')
+        local_time = datetime.now(local_tz).strftime("%Y-%m-%d %H:%M:%S")
+        worksheet.update("AF2", [[f"{local_time}"]])
+        print(f"Timestamp written to AF2: {local_time}")
+
+
+
     
-    # === ✅ Add timestamp to Y2 ===
-    local_tz = pytz.timezone('Asia/Dhaka')
-    local_time = datetime.now(local_tz).strftime("%Y-%m-%d %H:%M:%S")
-    worksheet.update("AF2", [[f"{local_time}"]])
-    print(f"Timestamp written to AF2: {local_time}")
     
 
 except Exception as e:
