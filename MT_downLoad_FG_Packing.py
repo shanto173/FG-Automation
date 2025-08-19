@@ -69,27 +69,27 @@ while True:
         time.sleep(2)
 
         # === Step 2: Click user/company switch ===
-        # time.sleep(2)
-        # try:
-        #     wait.until(EC.invisibility_of_element_located((By.CSS_SELECTOR, ".modal-backdrop")))
-        # except:
-        #     pass
+        time.sleep(2)
+        try:
+            wait.until(EC.invisibility_of_element_located((By.CSS_SELECTOR, ".modal-backdrop")))
+        except:
+            pass
 
-        # switcher_span = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR,
-        #     "div.o_menu_systray div.o_switch_company_menu > button > span"
-        # )))
-        # driver.execute_script("arguments[0].scrollIntoView(true);", switcher_span)
-        # switcher_span.click()
-        # time.sleep(2)
+        switcher_span = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR,
+            "div.o_menu_systray div.o_switch_company_menu > button > span"
+        )))
+        driver.execute_script("arguments[0].scrollIntoView(true);", switcher_span)
+        switcher_span.click()
+        time.sleep(2)
 
-        # # === Step 3: Click 'Zipper' company ===
-        # log.info("Click 'Zipper' company ===")
-        # target_div = wait.until(EC.element_to_be_clickable((By.XPATH,
-        #     "//div[contains(@class, 'log_into')][span[contains(text(), 'Zipper')]]"
-        # )))
-        # driver.execute_script("arguments[0].scrollIntoView(true);", target_div)
-        # target_div.click()
-        # time.sleep(2)
+        # === Step 3: Click 'Zipper' company ===
+        log.info("Click 'Zipper' company ===")
+        target_div = wait.until(EC.element_to_be_clickable((By.XPATH,
+            "//div[contains(@class, 'log_into')][span[contains(text(), 'Zipper')]]"
+        )))
+        driver.execute_script("arguments[0].scrollIntoView(true);", target_div)
+        target_div.click()
+        time.sleep(2)
 
         # step 4
         # === Trigger global search box by sending a keystroke ===
@@ -105,6 +105,16 @@ while True:
         wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/div[2]/div/div/div/div/main/div/div[2]/div/div[1]/a/div"))).click() 
         time.sleep(5)
         
+        # cancel the FG packing filter first
+        # 
+        
+         # Step 5
+        
+        log.info("=== Click on Filter box Down Arrow ===")
+        wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div[1]/div/div[2]/div/div[1]/div/div/div[3]/button"))).click() 
+        time.sleep(4)
+
+        
         # Step 6
         
         log.info("=== Click on Filter box Down Arrow ===")
@@ -113,14 +123,103 @@ while True:
 
         # Step 8
         log.info("=== Click on custome filter ===")
-        wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div[1]/div/div[2]/div/div[2]/div/div[1]/span[23]"))).click() 
+        wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div[1]/div/div[2]/div/div[2]/div/div[1]/span[20]"))).click() 
         time.sleep(4)
+        
+        
+        #########
+        
+        
+        log.info("=== Click on custome filter first search box salesperson to change it value ===")
+        wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/div[2]/div/div/div/div/main/div/div/div/div[2]/div/div[2]/button[2]"))).click() 
+        time.sleep(4)
+        # Add another button
+        log.info("=== Click on custome filter first search box salesperson to change it value ===")
+        wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/div[2]/div/div/div/div/main/div/div/div/div[3]/div[3]/div/div[2]/button[1]"))).click() 
+        time.sleep(4)
+        
+        # Delete the first condition
+        log.info("=== Click on custome filter first search box salesperson to change it value ===")
+        wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/div[2]/div/div/div/div/main/div/div/div/div[2]/div/div[2]/button[3]"))).click() 
+        time.sleep(4)
+        
+        
+        log.info("=== Click on custome filter first search box salesperson to change it value ===")
+        wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/div[2]/div[1]/div/div/div/main/div/div/div/div[2]/div/div[1]/div[1]/div/div"))).click() 
+        time.sleep(4)
+        
+        log.info("=== click on search Box and send some key like Next Operation ===")
+        input_box = driver.find_element(By.XPATH, "/html/body/div[2]/div[2]/div[2]/div[1]/div[1]/div[2]/input")
+        # Send the text "Sales Type"
+        input_box.send_keys("Next Operation")
+        time.sleep(2)
+        # Step 11
+        log.info("=== Click on Action Date Option ===")
+        wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/div[2]/div[2]/div[1]/div[2]/ul/li/button"))).click() 
+        time.sleep(3)
+        
+        
+        
+        # Select the next operation option from list of option
+        # /html/body/div[2]/div[2]/div/div/div/div/main/div/div/div/div[2]/div/div[1]/div[3]/select
+        
+        log.info("=== Select the next operation option from list of option ===")
+        wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/div[2]/div/div/div/div/main/div/div/div/div[2]/div/div[1]/div[3]/select"))).click() 
+        time.sleep(3)
+        
+        # Click on FG packing
+        log.info("=== Select the FG Packing option from list of option ===")
+        wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/div[2]/div/div/div/div/main/div/div/div/div[2]/div/div[1]/div[3]/select/option[24]"))).click() 
+        time.sleep(3)
+        
+        ######## 2
+        
+        log.info("=== Click on custome filter first search box salesperson to change it value ===")
+        wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/div[2]/div/div/div/div/main/div/div/div/div[3]/div/div[1]/div[1]/div/div/span"))).click() 
+        time.sleep(4)
+        
+        log.info("=== click on search Box and send some key like Next Operation ===")
+        input_box = driver.find_element(By.XPATH, "/html/body/div[2]/div[2]/div[2]/div[1]/div[1]/div[2]/input")
+        # Send the text "Sales Type"
+        input_box.send_keys("State")
+        time.sleep(2)
+        # Step 11
+        log.info("=== Click on Action Date Option ===")
+        wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/div[2]/div[2]/div[1]/div[2]/ul/li[1]/button"))).click() 
+        time.sleep(3)
+        
+        ##
+        
+        log.info("=== Select the Not equal option from the list  of option ===")
+        wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/div[2]/div/div/div/div/main/div/div/div/div[3]/div/div[1]/div[2]/select"))).click() 
+        time.sleep(3)
+        
+        # Click on FG packing
+        log.info("=== Select the FG Packing option from list of option ===")
+        wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/div[2]/div/div/div/div/main/div/div/div/div[3]/div/div[1]/div[2]/select/option[2]"))).click() 
+        time.sleep(3)
+        
+        
+        
+        # Select the next operation option from list of option
+        # /html/body/div[2]/div[2]/div/div/div/div/main/div/div/div/div[2]/div/div[1]/div[3]/select
+        
+        log.info("=== Select the next operation option from list of option ===")
+        wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/div[2]/div/div/div/div/main/div/div/div/div[3]/div/div[1]/div[3]/select"))).click() 
+        time.sleep(3)
+        
+        # Click on FG packing
+        log.info("=== Select the FG Packing option from list of option ===")
+        wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/div[2]/div/div/div/div/main/div/div/div/div[3]/div/div[1]/div[3]/select/option[6]"))).click() 
+        time.sleep(3)
+        
+        #####
         
         
         # Step 9
 ########## 1st Conditions steps #########
         log.info("=== Click on custome filter first search box salesperson to change it value ===")
-        wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/div[2]/div[1]/div/div/div/main/div/div/div/div[2]/div/div[1]/div[1]/div/div"))).click() 
+        wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/div[2]/div/div/div/div/main/div/div/div/div[4]/div/div[1]/div[1]/div/div/span"))).click() 
         time.sleep(4)
         # Step 10
         log.info("=== click on search Box and send some key like Sales Type ===")
@@ -139,31 +238,31 @@ while True:
 ########## Third condition Steps #########
         # Step 12
         log.info("=== Click on is to get the list of condition Option ===")
-        wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/div[2]/div/div/div/div/main/div/div/div/div[2]/div/div[1]/div[2]/select"))).click() 
+        wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/div[2]/div/div/div/div/main/div/div/div/div[4]/div/div[1]/div[2]/select"))).click() 
         time.sleep(3) 
         
         # Step 13
         log.info("=== Click on the is between condition Option ===")
-        wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/div[2]/div/div/div/div/main/div/div/div/div[2]/div/div[1]/div[2]/select/option[7]"))).click() 
+        wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/div[2]/div/div/div/div/main/div/div/div/div[4]/div/div[1]/div[2]/select/option[7]"))).click() 
         time.sleep(3) 
         
         today = datetime.today()
         # === 2. Apply the logic: use previous month if day < 5
-        if today.day < 5:
+        if today.day < 2:
             year = today.year if today.month > 1 else today.year - 1
             month = today.month - 1 if today.month > 1 else 12
         else:
             year = today.year
             month = today.month
 
-        # === 3. Build datetime strings
-        start_date = datetime(year, month, 1).strftime("%d/%m/%Y 00:00:27")
+        # === 3. Build datetime strings 
+        start_date = datetime(year, month, 1).strftime("%d/%m/%Y 01:00:20")
         last_day = calendar.monthrange(year, month)[1]
-        end_date = datetime(year, month, last_day).strftime("%d/%m/%Y 23:55:27")
+        end_date = datetime(year, month, last_day).strftime("%d/%m/%Y 23:55:20")
 
         # === 5. Send values to input boxes
-        start_input_xpath = "/html/body/div[2]/div[2]/div/div/div/div/main/div/div/div/div[2]/div/div[1]/div[3]/div/div[1]/input"
-        end_input_xpath   = "/html/body/div[2]/div[2]/div/div/div/div/main/div/div/div/div[2]/div/div[1]/div[3]/div/div[2]/input"
+        start_input_xpath = "/html/body/div[2]/div[2]/div/div/div/div/main/div/div/div/div[4]/div/div[1]/div[3]/div/div[1]/input"
+        end_input_xpath   = "/html/body/div[2]/div[2]/div/div/div/div/main/div/div/div/div[4]/div/div[1]/div[3]/div/div[2]/input"
         time.sleep(3) 
         # === Clear and input datetime values ===
         # === Find the start input field and clear using Ctrl+A + Backspace
@@ -222,7 +321,7 @@ while True:
 
             log.info("=== Final export button click ===")
             wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/div[2]/div/div/div/div/footer/button[1]"))).click()
-            time.sleep(5)
+            time.sleep(20)
         else:
             # Continue with action → export → download flow
             log.info("=== Click on Action option ===")
@@ -243,7 +342,7 @@ while True:
 
             log.info("=== Final export button click ===")
             wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/div[2]/div/div/div/div/footer/button[1]"))).click()
-            time.sleep(5)
+            time.sleep(20)
        
         # === Step 9: Confirm file downloaded ===
         
@@ -296,15 +395,15 @@ try:
     client = gspread.authorize(creds)
 
     # Open the sheet and paste the data
-    sheet = client.open_by_key("1WNwp_7AnRVHuxV5WR6zw6ijF2kxTS3tNiaXW92D1O9I")
-    worksheet = sheet.worksheet("MT FG Packing")
+    sheet = client.open_by_key("1acV7UrmC8ogC54byMrKRTaD9i1b1Cf9QZ-H1qHU5ZZc")
+    worksheet = sheet.worksheet("Packing Details Data")
     
-    
+
     if df_production_pcs.empty:
         print("Skip: DataFrame is empty, not pasting to sheet.")
     else:
         # Clear old content (optional)
-        worksheet.batch_clear(['A:AC'])
+        worksheet.batch_clear(['A:Z'])
 
         # Paste new data
         set_with_dataframe(worksheet, df_production_pcs)
@@ -313,8 +412,10 @@ try:
         # === ✅ Add timestamp to Y2 ===
         local_tz = pytz.timezone('Asia/Dhaka')
         local_time = datetime.now(local_tz).strftime("%Y-%m-%d %H:%M:%S")
-        worksheet.update("AC2", [[f"{local_time}"]])
+        worksheet.update("AA2", [[f"{local_time}"]])
         print(f"Timestamp written to AC2: {local_time}")
+
+
 
 
     
