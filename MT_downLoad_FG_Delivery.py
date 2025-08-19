@@ -112,7 +112,7 @@ while True:
 
         # Step 8
         log.info("=== Click on custome filter ===")
-        wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div[1]/div/div[2]/div/div[2]/div/div[1]/span[23]"))).click() 
+        wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div[1]/div/div[2]/div/div[2]/div/div[1]/span[20]"))).click() 
         time.sleep(4)
         
         
