@@ -75,20 +75,20 @@ while True:
         except:
             pass
 
-        switcher_span = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR,
-            "div.o_menu_systray div.o_switch_company_menu > button > span"
-        )))
-        driver.execute_script("arguments[0].scrollIntoView(true);", switcher_span)
-        switcher_span.click()
-        time.sleep(2)
+        # switcher_span = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR,
+        #     "div.o_menu_systray div.o_switch_company_menu > button > span"
+        # )))
+        # driver.execute_script("arguments[0].scrollIntoView(true);", switcher_span)
+        # switcher_span.click()
+        # time.sleep(2)
 
-        # === Step 3: Click 'Zipper' company ===
-        log.info("Click 'Zipper' company ===")
-        target_div = wait.until(EC.element_to_be_clickable((By.XPATH,
-            "//div[contains(@class, 'log_into')][span[contains(text(), 'Zipper')]]"
-        )))
-        driver.execute_script("arguments[0].scrollIntoView(true);", target_div)
-        target_div.click()
+        # # === Step 3: Click 'Zipper' company ===
+        # log.info("Click 'Zipper' company ===")
+        # target_div = wait.until(EC.element_to_be_clickable((By.XPATH,
+        #     "//div[contains(@class, 'log_into')][span[contains(text(), 'Zipper')]]"
+        # )))
+        # driver.execute_script("arguments[0].scrollIntoView(true);", target_div)
+        # target_div.click()
         time.sleep(2)
 
         # step 4
@@ -396,7 +396,7 @@ try:
 
     # Open the sheet and paste the data
     sheet = client.open_by_key("1acV7UrmC8ogC54byMrKRTaD9i1b1Cf9QZ-H1qHU5ZZc")
-    worksheet = sheet.worksheet("Packing Details Data")
+    worksheet = sheet.worksheet("MT_Packing Details Data")
     
 
     if df_production_pcs.empty:
